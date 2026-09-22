@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Flores para Hna. Priscila N. Quintero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cielo-1:#1b1436;
+    --cielo-2:#2e1c4a;
+    --cielo-3:#5b2f5e;
+    --cielo-4:#a24d5e;
+    --tierra:#1a1030;
+    --amarillo:#ffd93d;
+    --amarillo-claro:#fff3a8;
+    --amarillo-hondo:#f7a827;
+    --centro:#8a4b1e;
+    --texto:#fff8e7;
+    --texto-suave:rgba(255,248,231,.72);
+    --tallo:#4e8f5f;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;margin:0;padding:0;overflow:hidden;}
+  body{
+    background:
+      radial-gradient(120% 80% at 50% 100%, var(--cielo-4) 0%, transparent 55%),
+      radial-gradient(100% 70% at 20% 90%, var(--cielo-3) 0%, transparent 60%),
+      linear-gradient(180deg, var(--cielo-1) 0%, var(--cielo-2) 45%, var(--cielo-3) 80%, var(--cielo-4) 100%);
+    font-family:'Quicksand', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color:var(--texto);
+    user-select:none;
+  }
+
+  /* ---------- estrellas ---------- */
+  #estrellas{position:fixed;inset:0;pointer-events:none;z-index:0;}
+  .estrella{
+    position:absolute;border-radius:50%;background:#fff;
+    animation:titilar ease-in-out infinite;
+  }
+  @keyframes titilar{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:.9;transform:scale(1.2)}}
+
+  /* ---------- luna ---------- */
+  .luna{
+    position:fixed;top:5%;right:4%;width:76px;height:76px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, #fffdf2, #ffe9b0 60%, #f6d98a);
+    box-shadow:0 0 60px 18px rgba(255,230,170,.25), 0 0 140px 50px rgba(255,220,150,.12);
+    z-index:0;pointer-events:none;
+    animation:respirarLuna 9s ease-in-out infinite;
+  }
+  @media (max-width:600px){
+    .luna{top:14px;right:14px;width:46px;height:46px;box-shadow:0 0 34px 10px rgba(255,230,170,.22), 0 0 80px 28px rgba(255,220,150,.1);}
+  }
+  @keyframes respirarLuna{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+  /* ---------- colinas ---------- */
+  .colinas{position:fixed;left:0;right:0;bottom:0;height:34vh;z-index:1;pointer-events:none;}
+  .colinas svg{width:100%;height:100%;display:block;}
+
+  /* ---------- titulo ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:5;
+    text-align:center;padding:34px 20px 0;pointer-events:none;
+  }
+  @media (max-width:600px){
+    header{padding:52px 46px 0;}
+  }
+  .para{
+    font-family:'Quicksand',sans-serif;font-size:.72rem;letter-spacing:.42em;
+    text-transform:uppercase;color:var(--texto-suave);margin:0 0 10px;
+    opacity:0;animation:aparecer 1.4s ease .3s forwards;
+  }
+  h1{
+    font-family:'Cormorant Garamond', Georgia, serif;font-weight:400;
+    font-size:clamp(2.6rem,9vw,4.6rem);line-height:1;margin:0;
+    background:linear-gradient(180deg,#fff8e7 0%,var(--amarillo-claro) 55%,var(--amarillo) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 40px rgba(255,217,61,.22);
+    opacity:0;animation:aparecer 1.6s ease .6s forwards;
+  }
+  .sub{
+    font-size:.8rem;letter-spacing:.14em;color:var(--texto-suave);margin:16px 0 0;
+    opacity:0;animation:latirSub 3.4s ease 1.6s infinite;
+  }
+  @keyframes aparecer{to{opacity:1}}
+  @keyframes latirSub{0%,100%{opacity:.35}50%{opacity:.95}}
+
+  /* ---------- jardin ---------- */
+  #jardin{position:fixed;inset:0;z-index:3;}
+  .flor{
+    position:absolute;transform:translate(-50%,-100%);
+    transform-origin:bottom center;pointer-events:none;
+    animation:brotar 1s cubic-bezier(.2,1.5,.4,1) forwards;
+  }
+  @keyframes brotar{
+    0%{opacity:0;transform:translate(-50%,-100%) scale(.05) rotate(-25deg)}
+    60%{opacity:1;transform:translate(-50%,-100%) scale(1.12) rotate(4deg)}
+    100%{opacity:1;transform:translate(-50%,-100%) scale(1) rotate(0)}
+  }
+  .flor .cabeza{animation:mecer 4.5s ease-in-out infinite;transform-origin:50% 100%;}
+  @keyframes mecer{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+
+  /* ---------- frase ---------- */
+  .frase{
+    position:absolute;transform:translate(-50%,-50%);z-index:8;pointer-events:none;
+    width:min(310px,88vw);max-width:min(310px,88vw);text-align:center;
+    font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+    font-size:clamp(.92rem,3.6vw,1.4rem);line-height:1.42;
+    color:#fffdf5;padding:14px 18px;border-radius:22px;
+    background:rgba(40,20,55,.55);
+    border:1px solid rgba(255,217,61,.35);
+    box-shadow:0 10px 40px rgba(0,0,0,.35), 0 0 30px rgba(255,217,61,.14);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    animation:frasear 4.6s ease forwards;
+    word-wrap:break-word;overflow-wrap:break-word;hyphens:auto;
+    box-sizing:border-box;
+  }
+  @keyframes frasear{
+    0%{opacity:0;transform:translate(-50%,-30%) scale(.85)}
+    14%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    72%{opacity:1;transform:translate(-50%,-62%) scale(1)}
+    100%{opacity:0;transform:translate(-50%,-85%) scale(.97)}
+  }
+
+  /* ---------- petalos y chispas ---------- */
+  .petalo{position:absolute;z-index:4;pointer-events:none;border-radius:60% 10% 60% 10%;}
+  .chispa{position:absolute;z-index:7;pointer-events:none;border-radius:50%;background:var(--amarillo-claro);box-shadow:0 0 8px var(--amarillo);}
+
+  /* ---------- contador ---------- */
+  .contador{
+    position:fixed;bottom:18px;left:0;right:0;z-index:9;text-align:center;
+    font-size:.74rem;letter-spacing:.2em;color:var(--texto-suave);
+    pointer-events:none;text-transform:uppercase;
+  }
+  .contador b{color:var(--amarillo);font-weight:600;}
+
+  /* ---------- firma ---------- */
+  .firma{
+    position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 50% 50%, rgba(45,22,60,.86), rgba(20,12,38,.96));
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    opacity:0;pointer-events:none;transition:opacity 1.1s ease;padding:24px;
+  }
+  .firma.ver{opacity:1;pointer-events:auto;}
+  .firma .caja{max-width:440px;text-align:center;}
+  .firma h2{
+    font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-style:italic;
+    font-size:clamp(1.5rem,6vw,2.2rem);line-height:1.35;margin:0 0 18px;color:var(--amarillo-claro);
+  }
+  .firma p{font-size:.95rem;line-height:1.7;color:var(--texto-suave);margin:0 0 26px;}
+  .firma button{
+    font-family:'Quicksand',sans-serif;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+    padding:12px 26px;border-radius:999px;cursor:pointer;
+    color:#2b1a12;background:linear-gradient(180deg,var(--amarillo-claro),var(--amarillo-hondo));
+    border:none;box-shadow:0 8px 26px rgba(255,180,40,.3);
+  }
+  .firma button:active{transform:scale(.96);}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important;animation-iteration-count:1 !important;}
+  }
+</style>
+</head>
+<body>
+
+<div id="estrellas" aria-hidden="true"></div>
+<div class="luna" aria-hidden="true"></div>
+
+<div class="colinas" aria-hidden="true">
+  <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="rgba(60,30,70,.55)" d="M0,190 C240,120 420,240 720,190 C1020,140 1220,240 1440,180 L1440,320 L0,320 Z"/>
+    <path fill="rgba(35,18,48,.85)" d="M0,240 C260,190 480,290 780,240 C1080,190 1260,280 1440,235 L1440,320 L0,320 Z"/>
+    <path fill="#16102c" d="M0,285 C300,255 600,310 900,285 C1140,265 1300,300 1440,285 L1440,320 L0,320 Z"/>
+  </svg>
+</div>
+
+<header>
+  <p class="para">Para</p>
+  <h1>Hna. Priscila N. Quintero ♥</h1>
+  <p class="sub">toca donde quieras · florecer</p>
+</header>
+
+<div id="jardin"></div>
+<div class="contador">has hecho florecer <b id="n">0</b> flores</div>
+
+<div class="firma" id="firma">
+  <div class="caja">
+    <h2>“El Señor tiene planes de bien para ti, planes de darte un futuro y una esperanza.” — Jeremías 29:11</h2>
+    <p>Gracias por existir, Hna. Priscila. Este jardín no se marchita nunca: cada vez que vuelvas, volverá a florecer para ti. ♥</p>
+    <button id="seguir">Seguir sembrando</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const frases = [
+    "El Señor tiene planes de bien para ti, planes de darte un futuro y una esperanza. — Jeremías 29:11",
+    "No temas, porque él está contigo; no desmayes, porque él es tu Dios. — Isaías 41:10",
+    "Encomienda al Señor tu camino, confía en él, y él actuará. — Salmos 37:5",
+    "El gozo del Señor es tu fortaleza. — Nehemías 8:10",
+    "Todo lo puedes en Cristo, que te fortalece. — Filipenses 4:13",
+    "La paz de Dios, que sobrepasa todo entendimiento, guardará tu corazón. — Filipenses 4:7",
+    "Fuiste creada de manera formidable y maravillosa. — Salmos 139:14",
+    "El Señor es tu pastor, nada te faltará. — Salmos 23:1",
+    "Nada podrá separarte del amor de Dios. — Romanos 8:38-39",
+    "Da gracias en toda circunstancia, porque esa es su voluntad para ti. — 1 Tesalonicenses 5:18",
+    "Las misericordias del Señor son nuevas cada mañana. — Lamentaciones 3:22-23",
+    "El amor es paciente, es bondadoso, y todo lo espera. — 1 Corintios 13:4-7",
+    "Espera en el Señor; él renovará tus fuerzas y te hará volar como águila. — Isaías 40:31",
+    "Deléitate en el Señor, y él te concederá los deseos de tu corazón. — Salmos 37:4",
+    "El Señor peleará por ti; tú solo necesitas estar tranquila. — Éxodo 14:14",
+    "Bienaventurados los de limpio corazón, porque ellos verán a Dios. — Mateo 5:8",
+    "Que tu luz alumbre para que otros vean el bien que hay en ti. — Mateo 5:16",
+    "Todas las cosas ayudan a bien a los que aman a Dios. — Romanos 8:28",
+    "El Señor está cerca de los quebrantados de corazón. — Salmos 34:18",
+    "Echa toda tu ansiedad sobre él, porque él tiene cuidado de ti. — 1 Pedro 5:7",
+    "El fruto del Espíritu es amor, gozo, paz y paciencia. — Gálatas 5:22",
+    "Todo tiene su tiempo, y todo lo que se hace bajo el cielo tiene su hora. — Eclesiastés 3:1",
+    "Sé fuerte y valiente, porque el Señor tu Dios estará contigo. — Josué 1:9",
+    "El Señor es bueno, y su misericordia es para siempre. — Salmos 100:5",
+    "Bienaventurada eres, porque creíste que se cumpliría lo que el Señor te dijo. — Lucas 1:45",
+    "Vale más la mujer virtuosa que las piedras preciosas. — Proverbios 31:10",
+    "Regocíjate en el Señor siempre; una vez más lo digo: regocíjate. — Filipenses 4:4",
+    "Consideren los lirios del campo, cómo crecen sin afán, y aun así son vestidos con gloria. — Mateo 6:28-29"
+  ];
+
+  const jardin = document.getElementById('jardin');
+  const contadorEl = document.getElementById('n');
+  const firma = document.getElementById('firma');
+  const paletas = [
+    ['#fff3a8','#ffd93d','#f7a827'],
+    ['#fff8c9','#ffe066','#f5b301'],
+    ['#ffeb9c','#fdc93b','#e8941a'],
+    ['#fffbe0','#ffdf6b','#f6ad2b']
+  ];
+  let total = 0, orden = shuffle([...frases.keys()]), idx = 0, firmaMostrada = false;
+
+  function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;}
+  function rnd(a,b){return a+Math.random()*(b-a);}
+
+  /* estrellas */
+  (function(){
+    const cont = document.getElementById('estrellas');
+    const n = window.innerWidth < 600 ? 60 : 110;
+    let html = '';
+    for(let i=0;i<n;i++){
+      const s = rnd(1,2.6).toFixed(1);
+      html += `<span class="estrella" style="left:${rnd(0,100).toFixed(2)}%;top:${rnd(0,72).toFixed(2)}%;width:${s}px;height:${s}px;animation-duration:${rnd(2,6).toFixed(1)}s;animation-delay:${rnd(0,5).toFixed(1)}s;"></span>`;
+    }
+    cont.innerHTML = html;
+  })();
+
+  function crearFlor(x,y){
+    const pal = paletas[Math.random()*paletas.length|0];
+    const petalos = 8 + (Math.random()*4|0);
+    const escala = rnd(.75,1.25);
+    const altoTallo = rnd(50,110);
+    const w = 120, h = 120 + altoTallo;
+
+    let petalosSVG = '';
+    for(let i=0;i<petalos;i++){
+      const ang = (360/petalos)*i;
+      petalosSVG += `<ellipse cx="60" cy="30" rx="11" ry="27" fill="url(#g${total})" transform="rotate(${ang} 60 60)" opacity="${rnd(.88,1).toFixed(2)}"/>`;
+    }
+
+    const el = document.createElement('div');
+    el.className = 'flor';
+    el.style.left = x + 'px';
+    el.style.top  = y + 'px';
+    el.style.width = (w*escala) + 'px';
+    el.innerHTML = `
+      <svg viewBox="0 0 ${w} ${h}" width="100%" style="overflow:visible">
+        <defs>
+          <radialGradient id="g${total}" cx="50%" cy="80%">
+            <stop offset="0%" stop-color="${pal[2]}"/>
+            <stop offset="55%" stop-color="${pal[1]}"/>
+            <stop offset="100%" stop-color="${pal[0]}"/>
+          </radialGradient>
+          <radialGradient id="c${total}" cx="35%" cy="35%">
+            <stop offset="0%" stop-color="#c77b2e"/>
+            <stop offset="100%" stop-color="#7a3f14"/>
+          </radialGradient>
+          <filter id="b${total}" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="7" result="bl"/>
+            <feMerge><feMergeNode in="bl"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path d="M60,${h} C58,${h-altoTallo*0.5} 62,${h-altoTallo*0.7} 60,120" stroke="${'#4e8f5f'}" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M60,${h-altoTallo*0.45} C38,${h-altoTallo*0.62} 30,${h-altoTallo*0.3} 60,${h-altoTallo*0.32}" fill="#4e8f5f" opacity=".9"/>
+        <g class="cabeza" filter="url(#b${total})">
+          ${petalosSVG}
+          <circle cx="60" cy="60" r="17" fill="url(#c${total})"/>
+          <circle cx="60" cy="60" r="17" fill="none" stroke="${pal[0]}" stroke-width="1.5" opacity=".5"/>
+        </g>
+      </svg>`;
+    jardin.appendChild(el);
+    setTimeout(()=>el.remove(), 26000);
+    el.style.animation += ', desvanecer 4s ease 22s forwards';
+  }
+
+  function crearFrase(x,y){
+    if(idx >= orden.length){ orden = shuffle(orden); idx = 0; }
+    const f = document.createElement('div');
+    f.className = 'frase';
+    f.textContent = frases[orden[idx++]];
+    f.style.visibility = 'hidden';
+    f.style.left = '50%';
+    f.style.top = '50%';
+    document.body.appendChild(f);
+
+    const margen = 10;
+    const rect = f.getBoundingClientRect();
+    const halfW = rect.width / 2;
+    const halfH = rect.height / 2;
+
+    let left = Math.min(Math.max(x, halfW + margen), window.innerWidth - halfW - margen);
+    let top  = Math.min(
+      Math.max(y - 150, halfH + 100),
+      window.innerHeight - halfH - 90
+    );
+
+    f.style.left = left + 'px';
+    f.style.top  = top + 'px';
+    f.style.visibility = '';
+    setTimeout(()=>f.remove(), 4800);
+  }
+
+  function chispas(x,y){
+    for(let i=0;i<14;i++){
+      const s = document.createElement('span');
+      s.className = 'chispa';
+      const size = rnd(3,7);
+      s.style.cssText = `left:${x}px;top:${y}px;width:${size}px;height:${size}px;`;
+      document.body.appendChild(s);
+      const ang = rnd(0,Math.PI*2), dist = rnd(40,130);
+      s.animate([
+        {transform:'translate(-50%,-50%) scale(1)', opacity:1},
+        {transform:`translate(${Math.cos(ang)*dist-50}%, ${Math.sin(ang)*dist-50}%) scale(0)`, opacity:0}
+      ], {duration: rnd(700,1400), easing:'cubic-bezier(.2,.8,.3,1)'}).onfinish = ()=>s.remove();
+    }
+  }
+
+  function petaloVolador(x,y){
+    for(let i=0;i<3;i++){
+      const p = document.createElement('span');
+      p.className = 'petalo';
+      const w = rnd(8,15);
+      p.style.cssText = `left:${x}px;top:${y}px;width:${w}px;height:${w*1.9}px;background:linear-gradient(180deg,#fff3a8,#f7a827);opacity:.85;`;
+      document.body.appendChild(p);
+      const dx = rnd(-160,160), dy = rnd(180, window.innerHeight*0.7);
+      p.animate([
+        {transform:'translate(0,0) rotate(0deg)', opacity:.9},
+        {transform:`translate(${dx}px, ${dy}px) rotate(${rnd(240,720)}deg)`, opacity:0}
+      ], {duration: rnd(3000,6000), easing:'cubic-bezier(.3,.1,.5,1)'}).onfinish = ()=>p.remove();
+    }
+  }
+
+  function florecer(x,y){
+    const suelo = Math.min(y + rnd(10,40), window.innerHeight - 8);
+    crearFlor(x, suelo);
+    crearFrase(x, y);
+    chispas(x, y);
+    petaloVolador(x, y);
+    total++;
+    contadorEl.textContent = total;
+    if(total === 12 && !firmaMostrada){
+      firmaMostrada = true;
+      setTimeout(()=>firma.classList.add('ver'), 3200);
+    }
+  }
+
+  document.addEventListener('pointerdown', e=>{
+    if(e.target.closest('.firma')) return;
+    florecer(e.clientX, e.clientY);
+  });
+
+  document.getElementById('seguir').addEventListener('click', e=>{
+    e.stopPropagation();
+    firma.classList.remove('ver');
+  });
+
+  /* primera flor de bienvenida */
+  setTimeout(()=>{
+    florecer(window.innerWidth/2, window.innerHeight*0.62);
+  }, 2100);
+
+  /* brisa: petalos ambientales */
+  setInterval(()=>{
+    if(document.hidden) return;
+    const p = document.createElement('span');
+    p.className = 'petalo';
+    const w = rnd(6,12);
+    p.style.cssText = `left:${rnd(0,window.innerWidth)}px;top:-30px;width:${w}px;height:${w*1.9}px;background:linear-gradient(180deg,#fff3a8,#ffd93d);opacity:.5;`;
+    document.body.appendChild(p);
+    p.animate([
+      {transform:'translate(0,0) rotate(0deg)', opacity:.55},
+      {transform:`translate(${rnd(-120,120)}px, ${window.innerHeight+80}px) rotate(${rnd(180,540)}deg)`, opacity:0}
+    ], {duration: rnd(9000,16000), easing:'linear'}).onfinish = ()=>p.remove();
+  }, 1800);
+
+  const st = document.createElement('style');
+  st.textContent = '@keyframes desvanecer{to{opacity:0;transform:translate(-50%,-100%) scale(.9)}}';
+  document.head.appendChild(st);
+})();
+</script>
+</body>
+</html>
